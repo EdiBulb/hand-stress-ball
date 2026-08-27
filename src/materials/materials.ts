@@ -1,0 +1,165 @@
+import type { MaterialConfig } from './types'
+import {
+  playWaxBubble,
+  playGlobe,
+  playOrange,
+  playWater,
+  playSand,
+  playWood,
+  playToxicGas,
+  playStatic,
+  playSlime,
+  playSnowball,
+  playBrick,
+} from './audio'
+import waxBubbleImage from '../assets/materials/wax-bubble.png'
+import globeImage from '../assets/materials/globe.png'
+import orangeImage from '../assets/materials/orange.png'
+import waterImage from '../assets/materials/water.png'
+import sandImage from '../assets/materials/sand.png'
+import woodImage from '../assets/materials/wood.png'
+import toxicGasImage from '../assets/materials/toxic-gas.png'
+import staticImage from '../assets/materials/static.png'
+import slimeImage from '../assets/materials/slime.png'
+import snowballImage from '../assets/materials/snowball.png'
+import brickImage from '../assets/materials/brick.png'
+
+export const MATERIALS: MaterialConfig[] = [
+  {
+    id: 'wax-bubble',
+    label: '왁뿌볼',
+    emoji: '🫧',
+    background: 'radial-gradient(circle at 35% 30%, #fef9c3, #facc15 65%, #ca8a04)',
+    image: waxBubbleImage,
+    resistance: 0.35,
+    squishStyle: 'elastic',
+    playSound: () => playWaxBubble(),
+    particle: 'spark',
+    particleThreshold: 0.5,
+  },
+  {
+    id: 'globe',
+    label: '지구본',
+    emoji: '🌍',
+    background: 'radial-gradient(circle at 35% 30%, #bae6fd, #38bdf8 55%, #0369a1)',
+    image: globeImage,
+    resistance: 0.4,
+    squishStyle: 'elastic',
+    playSound: () => playGlobe(),
+    particle: 'dust',
+    particleThreshold: 0.6,
+  },
+  {
+    id: 'orange',
+    label: '오렌지',
+    emoji: '🍊',
+    background: 'radial-gradient(circle at 35% 30%, #fed7aa, #f97316 60%, #c2410c)',
+    image: orangeImage,
+    resistance: 0.3,
+    squishStyle: 'elastic',
+    playSound: (grip) => playOrange(grip),
+    particle: 'droplet',
+    particleThreshold: 0.8,
+  },
+  {
+    id: 'water',
+    label: '물',
+    emoji: '💧',
+    background: 'radial-gradient(circle at 35% 30%, #e0f2fe, #38bdf8 55%, #1d4ed8)',
+    image: waterImage,
+    resistance: 0.05,
+    squishStyle: 'elastic',
+    playSound: () => playWater(),
+    particle: 'droplet',
+    particleThreshold: 0.3,
+  },
+  {
+    id: 'sand',
+    label: '모래',
+    emoji: '⏳',
+    background: 'radial-gradient(circle at 35% 30%, #fef3c7, #eab308 60%, #a16207)',
+    image: sandImage,
+    resistance: 0.5,
+    squishStyle: 'plastic',
+    playSound: () => playSand(),
+    particle: 'sand',
+    particleThreshold: 0.4,
+  },
+  {
+    id: 'wood',
+    label: '나무',
+    emoji: '🪵',
+    background: 'radial-gradient(circle at 35% 30%, #d6b98c, #92643a 70%, #5c3a21)',
+    image: woodImage,
+    resistance: 0.85,
+    squishStyle: 'rigid',
+    playSound: (grip) => playWood(grip),
+    particle: 'splinter',
+    particleThreshold: 0.9,
+  },
+  {
+    id: 'toxic-gas',
+    label: '독가스 볼',
+    emoji: '☠️',
+    background: 'radial-gradient(circle at 35% 30%, #d9f99d, #65a30d 60%, #1a2e05)',
+    image: toxicGasImage,
+    resistance: 0.25,
+    squishStyle: 'elastic',
+    playSound: () => playToxicGas(),
+    particle: 'smoke',
+    particleThreshold: 0.4,
+  },
+  {
+    id: 'static',
+    label: '찌릿볼',
+    emoji: '⚡',
+    background: 'radial-gradient(circle at 35% 30%, #fef08a, #eab308 55%, #713f12)',
+    image: staticImage,
+    resistance: 0.3,
+    squishStyle: 'elastic',
+    playSound: () => playStatic(),
+    particle: 'spark',
+    particleThreshold: 0.35,
+  },
+  {
+    id: 'slime',
+    label: '슬라임/젤리',
+    emoji: '🟢',
+    background: 'radial-gradient(circle at 35% 30%, #bbf7d0, #22c55e 60%, #15803d)',
+    image: slimeImage,
+    resistance: 0.1,
+    squishStyle: 'elastic',
+    playSound: () => playSlime(),
+    particle: 'droplet',
+    particleThreshold: 0.5,
+  },
+  {
+    id: 'snowball',
+    label: '눈덩이',
+    emoji: '❄️',
+    background: 'radial-gradient(circle at 35% 30%, #ffffff, #e0f2fe 65%, #bae6fd)',
+    image: snowballImage,
+    resistance: 0.6,
+    squishStyle: 'plastic',
+    playSound: () => playSnowball(),
+    particle: 'dust',
+    particleThreshold: 0.3,
+    consumable: true,
+  },
+  {
+    id: 'brick',
+    label: '벽돌',
+    emoji: '🧱',
+    background: 'linear-gradient(160deg, #c2703d, #7c2d12)',
+    image: brickImage,
+    resistance: 0.95,
+    squishStyle: 'rigid',
+    playSound: () => playBrick(),
+    particle: 'dust',
+    particleThreshold: 0.9,
+  },
+]
+
+export function getMaterialById(id: string): MaterialConfig | undefined {
+  return MATERIALS.find((m) => m.id === id)
+}
