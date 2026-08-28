@@ -27,7 +27,7 @@ import brickImage from '../assets/materials/brick.png'
 export const MATERIALS: MaterialConfig[] = [
   {
     id: 'wax-bubble',
-    label: '왁뿌볼',
+    label: 'Bubble Ball',
     emoji: '🫧',
     background: 'radial-gradient(circle at 35% 30%, #fef9c3, #facc15 65%, #ca8a04)',
     image: waxBubbleImage,
@@ -39,7 +39,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'globe',
-    label: '지구본',
+    label: 'Globe',
     emoji: '🌍',
     background: 'radial-gradient(circle at 35% 30%, #bae6fd, #38bdf8 55%, #0369a1)',
     image: globeImage,
@@ -51,7 +51,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'orange',
-    label: '오렌지',
+    label: 'Orange',
     emoji: '🍊',
     background: 'radial-gradient(circle at 35% 30%, #fed7aa, #f97316 60%, #c2410c)',
     image: orangeImage,
@@ -63,7 +63,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'water',
-    label: '물',
+    label: 'Water',
     emoji: '💧',
     background: 'radial-gradient(circle at 35% 30%, #e0f2fe, #38bdf8 55%, #1d4ed8)',
     image: waterImage,
@@ -75,7 +75,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'sand',
-    label: '모래',
+    label: 'Sand',
     emoji: '⏳',
     background: 'radial-gradient(circle at 35% 30%, #fef3c7, #eab308 60%, #a16207)',
     image: sandImage,
@@ -87,7 +87,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'wood',
-    label: '나무',
+    label: 'Wood',
     emoji: '🪵',
     background: 'radial-gradient(circle at 35% 30%, #d6b98c, #92643a 70%, #5c3a21)',
     image: woodImage,
@@ -99,7 +99,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'toxic-gas',
-    label: '독가스 볼',
+    label: 'Toxic Gas Ball',
     emoji: '☠️',
     background: 'radial-gradient(circle at 35% 30%, #d9f99d, #65a30d 60%, #1a2e05)',
     image: toxicGasImage,
@@ -111,7 +111,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'static',
-    label: '찌릿볼',
+    label: 'Static Ball',
     emoji: '⚡',
     background: 'radial-gradient(circle at 35% 30%, #fef08a, #eab308 55%, #713f12)',
     image: staticImage,
@@ -123,7 +123,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'slime',
-    label: '슬라임/젤리',
+    label: 'Slime/Jelly',
     emoji: '🟢',
     background: 'radial-gradient(circle at 35% 30%, #bbf7d0, #22c55e 60%, #15803d)',
     image: slimeImage,
@@ -135,7 +135,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'snowball',
-    label: '눈덩이',
+    label: 'Snowball',
     emoji: '❄️',
     background: 'radial-gradient(circle at 35% 30%, #ffffff, #e0f2fe 65%, #bae6fd)',
     image: snowballImage,
@@ -148,7 +148,7 @@ export const MATERIALS: MaterialConfig[] = [
   },
   {
     id: 'brick',
-    label: '벽돌',
+    label: 'Brick',
     emoji: '🧱',
     background: 'linear-gradient(160deg, #c2703d, #7c2d12)',
     image: brickImage,

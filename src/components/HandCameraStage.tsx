@@ -170,9 +170,9 @@ export function HandCameraStage({ materialId, imageUrl, onBack }: HandCameraStag
   if (cameraError) {
     return (
       <div className="camera-stage">
-        <p>카메라 권한이 필요해요. 브라우저 설정에서 카메라 접근을 허용해주세요.</p>
+        <p>Camera access is needed. Please allow camera access in your browser settings.</p>
         <button className="btn-secondary" onClick={onBack}>
-          뒤로
+          Back
         </button>
       </div>
     )
@@ -187,7 +187,7 @@ export function HandCameraStage({ materialId, imageUrl, onBack }: HandCameraStag
       {phase === 'positioning' && (
         <div className="hand-guide-overlay">
           <div className="hand-guide-outline">🖐️</div>
-          <p>{ready ? '여기에 손을 위치시키세요' : '카메라를 켜는 중...'}</p>
+          <p>{ready ? 'Position your hand here' : 'Starting camera...'}</p>
         </div>
       )}
 
@@ -196,12 +196,12 @@ export function HandCameraStage({ materialId, imageUrl, onBack }: HandCameraStag
           <div className="floating-object">
             <SqueezeObject material={material} gripAmount={gripAmount} imageUrl={imageUrl} />
           </div>
-          {!handPresent && <p className="hand-lost-hint">손이 안 보여요, 카메라 앞에 손을 보여주세요</p>}
+          {!handPresent && <p className="hand-lost-hint">Can't see your hand -- show it to the camera</p>}
         </>
       )}
 
       <button className="btn-secondary camera-back-btn" onClick={onBack}>
-        다른 거 고르기
+        Choose something else
       </button>
     </div>
   )

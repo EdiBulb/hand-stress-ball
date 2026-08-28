@@ -56,6 +56,10 @@
   background: #ede9fe;
 }
 
+.picker-card-gallery {
+  background: #dbeafe;
+}
+
 .upload-panel {
   display: flex;
   flex-direction: column;
@@ -75,9 +79,89 @@
   border-radius: 12px;
 }
 
+.upload-panel input[type='text'],
+.upload-panel select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.upload-hint {
+  color: #64748b;
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: center;
+}
+
+.upload-error {
+  color: #dc2626;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.upload-success {
+  color: #16a34a;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
 .upload-actions {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
+}
+
+.visit-counter {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* ---- Gallery screen ---- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  width: min(90vw, 720px);
+}
+
+.gallery-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px;
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+}
+
+.gallery-card:hover {
+  transform: translateY(-2px);
+}
+
+.gallery-thumb {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.gallery-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.gallery-creator {
+  font-size: 0.75rem;
+  color: #64748b;
 }
 
 .btn-primary,

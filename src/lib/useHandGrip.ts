@@ -48,7 +48,7 @@ export function useHandGrip(active: boolean): HandGripState {
         rafId = requestAnimationFrame(loop)
       } catch (err) {
         if (!cancelled) {
-          setCameraError(err instanceof Error ? err.message : '카메라를 시작할 수 없어요')
+          setCameraError(err instanceof Error ? err.message : "Couldn't start the camera")
         }
       }
     }

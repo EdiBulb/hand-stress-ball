@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { ObjectPicker } from './components/ObjectPicker'
+import { Gallery } from './components/Gallery'
 import { HandCameraStage } from './components/HandCameraStage'
 import './App.css'
 
-type Step = 'select' | 'camera'
+type Step = 'select' | 'gallery' | 'camera'
 
 export default function App() {
   const [step, setStep] = useState<Step>('select')
@@ -24,7 +25,8 @@ export default function App() {
 
   return (
     <main className="app">
-      {step === 'select' && <ObjectPicker onSelect={handleSelect} />}
+      {step === 'select' && <ObjectPicker onSelect={handleSelect} onViewGallery={() => setStep('gallery')} />}
+      {step === 'gallery' && <Gallery onSelect={handleSelect} onBack={() => setStep('select')} />}
       {step === 'camera' && materialId && (
         <HandCameraStage materialId={materialId} imageUrl={imageUrl} onBack={handleBack} />
       )}
