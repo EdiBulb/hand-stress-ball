@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import type { GalleryBall } from '../lib/ballsApi'
+import { fetchApprovedBalls, type GalleryBall } from '../lib/ballsApi'
 import {
   UnauthorizedError,
   approveBall,
@@ -18,12 +18,15 @@ export function ModeratePage() {
   const [secret, setSecret] = useState<string | null>(() => getStoredSecret())
   const [balls, setBalls] = useState<GalleryBall[]>([])
   const [status, setStatus] = useState<'idle' | 'loading' | 'error'>('idle')
+  const [approvedBalls, setApprovedBalls] = useState<GalleryBall[]>([])
+  const [approvedStatus, setApprovedStatus] = useState<'idle' | 'loading' | 'error'>('idle')
   const [error, setError] = useState('')
   const [pendingAction, setPendingAction] = useState<string | null>(null)
 
   useEffect(() => {
     if (!secret) return
     void loadPending(secret)
+    void loadApproved()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [secret])
 
@@ -44,6 +47,17 @@ export function ModeratePage() {
       }
       setError(err instanceof Error ? err.message : 'Failed to load pending balls.')
       setStatus('error')
+    }
+  }
+
+  async function loadApproved() {
+    setApprovedStatus('loading')
+    try {
+      const list = await fetchApprovedBalls()
+      setApprovedBalls(list)
+      setApprovedStatus('idle')
+    } catch {
+      setApprovedStatus('error')
     }
   }
 
@@ -75,6 +89,22 @@ export function ModeratePage() {
       setBalls((prev) => prev.filter((ball) => ball.id !== id))
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to reject.')
+    } finally {
+      setPendingAction(null)
+    }
+  }
+
+  async function handleDeleteApproved(id: string, name: string) {
+    if (!secret) return
+    if (!window.confirm(`Delete "${name}"? It will disappear from the gallery immediately.`)) return
+    setPendingAction(id)
+    try {
+      // Same endpoint as reject -- it deletes the record regardless of
+      // approval status, so it works for already-live balls too.
+      await rejectBall(id, secret)
+      setApprovedBalls((prev) => prev.filter((ball) => ball.id !== id))
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to delete.')
     } finally {
       setPendingAction(null)
     }
@@ -124,6 +154,33 @@ export function ModeratePage() {
                 onClick={() => void handleReject(ball.id)}
               >
                 Reject
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <header className="moderate-header">
+        <h1>Live in the gallery</h1>
+      </header>
+
+      {approvedStatus === 'loading' && <p>Loading...</p>}
+      {approvedStatus === 'error' && <p className="upload-error">Failed to load the gallery list.</p>}
+      {approvedStatus === 'idle' && approvedBalls.length === 0 && <p>Nothing approved yet.</p>}
+
+      <div className="moderate-grid">
+        {approvedBalls.map((ball) => (
+          <div className="moderate-card" key={ball.id}>
+            <img className="moderate-thumb" src={ball.imageUrl} alt={ball.name} />
+            <div className="moderate-name">{ball.name}</div>
+            <div className="gallery-creator">by {ball.creatorName}</div>
+            <div className="moderate-actions">
+              <button
+                className="btn-secondary"
+                disabled={pendingAction === ball.id}
+                onClick={() => void handleDeleteApproved(ball.id, ball.name)}
+              >
+                Delete
               </button>
             </div>
           </div>
