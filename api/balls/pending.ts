@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { requireModerationSecret } from '../_lib/auth'
-import { getAllBalls } from '../_lib/ballStore'
+import { requireModerationSecret } from '../_lib/auth.js'
+import { getAllBalls } from '../_lib/ballStore.js'
 
 // GET /api/balls/pending -- balls waiting for review. Requires the
 // moderation secret header; used only by the /moderate page.

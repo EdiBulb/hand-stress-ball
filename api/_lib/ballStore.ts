@@ -1,7 +1,7 @@
 // Shared Redis-backed storage for the ball gallery. Anything under api/_lib
 // is a normal module, not a route -- Vercel skips underscore-prefixed
 // folders when building the api/ file-based routes.
-import { getRedis } from './redis'
+import { getRedis } from './redis.js'
 
 export interface BallRecord {
   id: string

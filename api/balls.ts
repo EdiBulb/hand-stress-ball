@@ -3,8 +3,8 @@ import { readFile } from 'node:fs/promises'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { put } from '@vercel/blob'
 import { IncomingForm, type File as FormidableFile } from 'formidable'
-import { VALID_MATERIAL_IDS, addBallId, getAllBalls, saveBall, type BallRecord } from './_lib/ballStore'
-import { notifyNewBall } from './_lib/discord'
+import { VALID_MATERIAL_IDS, addBallId, getAllBalls, saveBall, type BallRecord } from './_lib/ballStore.js'
+import { notifyNewBall } from './_lib/discord.js'
 
 // Keep uploads well under Vercel's default request body limit (4.5MB) so we
 // get our own clear error instead of a generic platform-level failure.

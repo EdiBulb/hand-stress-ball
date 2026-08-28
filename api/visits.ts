@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { recordVisit } from './_lib/visitStore'
+import { recordVisit } from './_lib/visitStore.js'
 
 // GET /api/visits -- records a page view and returns the running totals.
 // Deliberately a plain GET (like a classic "hit counter" badge) since this

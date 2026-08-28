@@ -1,4 +1,4 @@
-import { getRedis } from './redis'
+import { getRedis } from './redis.js'
 
 const SIXTY_DAYS_IN_SECONDS = 60 * 24 * 60 * 60
 

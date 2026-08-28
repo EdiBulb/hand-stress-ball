@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { requireModerationSecret } from '../_lib/auth'
-import { deleteBall, getBall, saveBall } from '../_lib/ballStore'
+import { requireModerationSecret } from '../_lib/auth.js'
+import { deleteBall, getBall, saveBall } from '../_lib/ballStore.js'
 
 // PATCH  /api/balls/:id -- approve a pending ball
 // DELETE /api/balls/:id -- reject (permanently remove) a ball

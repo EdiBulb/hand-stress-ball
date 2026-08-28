@@ -1,4 +1,4 @@
-import type { BallRecord } from './ballStore'
+import type { BallRecord } from './ballStore.js'
 
 const REVIEW_URL = 'https://hand-stress-ball.vercel.app/moderate'
 
